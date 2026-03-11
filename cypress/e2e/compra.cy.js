@@ -11,7 +11,14 @@ describe("Compra en SauceDemo", () => {
     login.visit()
 login.login("standard_user","secret_sauce")
 
+cy.url().should("include","inventory")
+cy.get(".title").should("contain","Products")
+
+cy.url().should("include", "inventory")
+
     inventory.addBackpack()
+
+    cy.get(".shopping_cart_badge").should("have.text","1")
 
     cy.get(".shopping_cart_badge").should("contain","1")
 
@@ -31,6 +38,7 @@ cy.get(".summary_info").should("be.visible")
 cy.get("#finish").click()
 
 cy.get(".complete-header")
+.should("contain","Thank you for your order")
   .should("contain","Thank you for your order")
 
 
