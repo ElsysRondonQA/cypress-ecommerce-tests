@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-03-11T13:30:29.688Z",
+    "end": "2026-03-11T13:30:30.584Z",
+    "duration": 896,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ddc08db0-a2f9-4c44-9539-473fc084cb22",
+      "title": "",
+      "fullFile": "cypress\\e2e\\compra.cy.js",
+      "file": "cypress\\e2e\\compra.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a6ca6fd9-5bd7-4876-ab94-d43d018604d2",
+          "title": "Compra en SauceDemo",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Agregar producto al carrito",
+              "fullTitle": "Compra en SauceDemo Agregar producto al carrito",
+              "timedOut": null,
+              "duration": 653,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const inventory = new _inventoryPage.default();\nconst login = new _loginPage.default();\nlogin.visit();\nlogin.login(\"standard_user\", \"secret_sauce\");\ncy.url().should(\"include\", \"inventory\");\ncy.get(\".title\").should(\"contain\", \"Products\");\ncy.url().should(\"include\", \"inventory\");\ncy.get(\".title\").should(\"contain\", \"Products\");\ncy.url().should(\"include\", \"inventory\");\ninventory.addBackpack();\ncy.get(\".shopping_cart_badge\").should(\"have.text\", \"1\");\ncy.get(\".shopping_cart_badge\").should(\"contain\", \"1\");\ninventory.openCart();\ncy.get(\".inventory_item_name\").should(\"contain\", \"Sauce Labs Backpack\");\ncy.get(\"#checkout\").click();\ncy.get(\"#first-name\").type(\"Elsys\");\ncy.get(\"#last-name\").type(\"Rondon\");\ncy.get(\"#postal-code\").type(\"1000\");\ncy.get(\"#continue\").click();\ncy.get(\".summary_info\").should(\"be.visible\");\ncy.get(\"#finish\").click();\ncy.get(\".complete-header\").should(\"contain\", \"Thank you for your order\").should(\"contain\", \"Thank you for your order\");",
+              "err": {
+                "message": "TypeError: login.login is not a function",
+                "estack": "TypeError: login.login is not a function\n    at Context.eval (webpack://sauce-automation/./cypress/e2e/compra.cy.js:12:6)\n    at runnable.fn (http://localhost:64905/__cypress/runner/cypress_runner.js:146599:19)\n    at callFn (http://localhost:64905/__cypress/runner/cypress_runner.js:165733:21)\n    at Runnable.run (http://localhost:64905/__cypress/runner/cypress_runner.js:165720:7)\n    at <unknown> (http://localhost:64905/__cypress/runner/cypress_runner.js:171818:30)\n    at PassThroughHandlerContext.finallyHandler (http://localhost:64905/__cypress/runner/cypress_runner.js:4042:23)\n    at PassThroughHandlerContext.tryCatcher (http://localhost:64905/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:64905/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:64905/__cypress/runner/cypress_runner.js:1546:18)",
+                "diff": null
+              },
+              "uuid": "03005182-07ab-46c6-bc16-7ddf8ae3ae81",
+              "parentUUID": "a6ca6fd9-5bd7-4876-ab94-d43d018604d2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "03005182-07ab-46c6-bc16-7ddf8ae3ae81"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 653,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

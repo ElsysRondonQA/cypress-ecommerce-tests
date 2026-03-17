@@ -1,15 +1,14 @@
-import LoginPage from "../pageObjects/loginPage";
-
 describe("Login inválido", () => {
 
   it("Debe mostrar error con credenciales incorrectas", () => {
 
-    const login = new LoginPage()
+    cy.visit("https://www.saucedemo.com")
 
-    login.visit()
-    login.login("standard_user","password_incorrecto")
+    cy.get("#user-name").type("usuario_incorrecto")
+    cy.get("#password").type("clave_incorrecta")
+    cy.get("#login-button").click()
 
-    cy.get(".error-message-container")
+    cy.get("[data-test='error']")
       .should("be.visible")
 
   })

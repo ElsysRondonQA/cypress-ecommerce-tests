@@ -1,7 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  reporter: "mochawesome",
+  // (línea eliminada)
   reporterOptions: {
     reportDir: "cypress/reports",
     overwrite: false,
@@ -9,8 +9,8 @@ module.exports = defineConfig({
     json: true
   },
   e2e: {
-    setupNodeEvents(on, config) {
-      return config;
-    },
-  },
+    setupNodeEvents(on, config) {},
+    specPattern: "cypress/e2e/**/*.cy.js",
+    supportFile: "cypress/support/e2e.js"
+  }
 });

@@ -4,15 +4,9 @@ class LoginPage {
     cy.visit("https://www.saucedemo.com")
   }
 
-  fillUsername(username) {
+  login(username, password) {
     cy.get("#user-name").type(username)
-  }
-
-  fillPassword(password) {
     cy.get("#password").type(password)
-  }
-
-  submit() {
     cy.get("#login-button").click()
   }
 
