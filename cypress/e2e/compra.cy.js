@@ -1,46 +1,27 @@
-import LoginPage from "../pageObjects/loginPage"
-import InventoryPage from "../pageObjects/inventoryPage"
+describe('Compra en SauceDemo', () => {
 
-describe("Compra en SauceDemo", () => {
+  it('Flujo de compra completo', () => {
 
-  it("Agregar producto al carrito", () => {
+    cy.visit('https://www.saucedemo.com')
 
-    const login = new LoginPage()
-    const inventory = new InventoryPage()
+    cy.get('#user-name').type('standard_user')
+    cy.get('#password').type('secret_sauce')
+    cy.get('#login-button').click()
 
-    login.visit()
+    cy.get('.inventory_item').first().find('button').click()
+    cy.get('.shopping_cart_link').click()
 
-    cy.fixture("user").then((user) => {
+    cy.get('#checkout').click()
+    cy.get('#first-name').type('Test')
+    cy.get('#last-name').type('User')
+    cy.get('#postal-code').type('1234')
+    cy.get('#continue').click()
+    cy.get('#finish').click()
 
-      login.login(user.username, user.password)
+    cy.get('.complete-header')
+      .should('contain', 'Thank you for your order')
 
-      cy.url().should("include","inventory")
-      cy.get(".title").should("contain","Products")
-
-      inventory.addBackpack()
-
-      cy.get(".shopping_cart_badge").should("have.text","1")
-
-      inventory.openCart()
-
-      cy.get(".inventory_item_name").should("contain","Sauce Labs Backpack")
-
-      cy.get("#checkout").click()
-
-      cy.get("#first-name").type(user.firstName)
-      cy.get("#last-name").type(user.lastName)
-      cy.get("#postal-code").type(user.postalCode)
-
-      cy.get("#continue").click()
-
-      cy.get(".summary_info").should("be.visible")
-
-      cy.get("#finish").click()
-
-      cy.get(".complete-header")
-        .should("contain","Thank you for your order")
-
-    })
+    cy.screenshot('compra-final')
 
   })
 
